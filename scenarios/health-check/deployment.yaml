@@ -14,10 +14,6 @@ spec:
       containers:
       - name: health-check
         image: madhuakula/k8s-goat-health-check
-        resources:
-          limits:
-            memory: "100Mi"
-            cpu: "30m"
         ports:
         - containerPort: 80
       # Custom Stuff
@@ -29,7 +25,7 @@ spec:
       volumes:
         - name: docker-sock-volume
           hostPath:
-            path: /var/run/docker.sock
+            path: /var/run/containerd/containerd.sock
             type: Socket
 ---
 apiVersion: v1
